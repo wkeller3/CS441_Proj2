@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private Button square = null;//findViewById(R.id.square);
     private Button triangle = null;//findViewById(R.id.triangle);
     private int flag; //0 circle, 1 square, 2 triangle
-    private LinearLayout canvasLayout = findViewById(R.id.customViewLayout);
+    private LinearLayout canvasLayout = null;//findViewById(R.id.customViewLayout);
     MySurface surfaceView = null;
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         circle = findViewById(R.id.circle);
         square = findViewById(R.id.square);
         triangle = findViewById(R.id.triangle);
+        canvasLayout = findViewById(R.id.customViewLayout);
 
         // Hide the app title bar.
         getSupportActionBar().hide();
@@ -70,11 +71,27 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if(view instanceof SurfaceView){
             view.invalidate();
 
+            float x = motionEvent.getX();
+            float y = motionEvent.getY();
+
+            surfaceView.setXCoor(x);
+            surfaceView.setYCoor(y);
+
+
             if(0 == flag){
+                Paint paint = new Paint();
+                paint.setColor(Color.RED);
+                surfaceView.setPaint(paint);
                 surfaceView.drawCircle();
             } else if(1 == flag){
+                Paint paint = new Paint();
+                paint.setColor(Color.GREEN);
+                surfaceView.setPaint(paint);
                 surfaceView.drawSqaure();
             } else{
+                Paint paint = new Paint();
+                paint.setColor(Color.BLACK);
+                surfaceView.setPaint(paint);
                 surfaceView.drawTriangle();
             }
             return true;

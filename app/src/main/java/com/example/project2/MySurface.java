@@ -14,6 +14,8 @@ import android.view.SurfaceHolder;
 public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
     private SurfaceHolder surfaceHolder = null;
     private  Paint paint = null;
+    private float xCoor = 0;
+    private float yCoor = 0;
 
     public MySurface(Context context){
         super(context);
@@ -46,7 +48,7 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         background.setColor(Color.LTGRAY);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
         paint.setColor(Color.YELLOW);
-        canvas.drawCircle(50, 50, 100, paint);
+        canvas.drawCircle(xCoor, yCoor, 100, paint);
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
@@ -55,23 +57,26 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         Paint background = new Paint();
         background.setColor(Color.BLACK);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
-        canvas.drawRect(0, 0, 200, 200, paint);
+        canvas.drawRect(xCoor, yCoor, xCoor+200, yCoor+200, paint);
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
     public void drawTriangle(){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
-        background.setColor(Color.WHITE);
+        background.setColor(Color.CYAN);
+        canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
 
-        Point a = new Point(40,40);
-        Point b = new Point(55,55);
-        Point c = new Point(25,25);
+        Point a = new Point((int)xCoor,(int)yCoor);
+        Point b = new Point((int)xCoor+150, (int)yCoor+150);
+        Point c = new Point((int)xCoor-150,(int)yCoor-150);
 
         Path path = new Path();
-        path.lineTo(a.x, a.y);
+        //path.setFillType(Path.FillType.EVEN_ODD);
+        //path.moveTo(a.x, a.y);
         path.lineTo(b.x, b.y);
         path.lineTo(c.x, c.y);
+        path.lineTo(a.x, a.y);
         path.close();
 
         canvas.drawPath(path, paint);
@@ -79,5 +84,27 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
+    public float getXCoor(){
+        return xCoor;
+    }
 
+    public void setXCoor(float xIn){
+        xCoor = xIn;
+    }
+
+    public float getYCoor(){
+        return yCoor;
+    }
+
+    public void setYCoor(float yIn){
+        yCoor = yIn;
+    }
+
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
+    }
 }
