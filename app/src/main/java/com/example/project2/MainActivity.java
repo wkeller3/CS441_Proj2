@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -19,7 +20,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private Button circle = null;//findViewById(R.id.circle);
     private Button square = null;//findViewById(R.id.square);
     private Button triangle = null;//findViewById(R.id.triangle);
+    private Button coordinates = null;
+    private Button resize = null;
+    private Button color = null;
+    private TextView text = null;
     private int flag; //0 circle, 1 square, 2 triangle
+    private int flag2 = -1; //0 coordinates, 1 resize, 2 color
     private LinearLayout canvasLayout = null;//findViewById(R.id.customViewLayout);
     MySurface surfaceView = null;
 
@@ -31,7 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         circle = findViewById(R.id.circle);
         square = findViewById(R.id.square);
         triangle = findViewById(R.id.triangle);
+        coordinates = findViewById(R.id.coordinates);
+        resize = findViewById(R.id.resize);
+        color = findViewById(R.id.color);
         canvasLayout = findViewById(R.id.customViewLayout);
+        text = findViewById(R.id.textView);
 
         // Hide the app title bar.
         getSupportActionBar().hide();
@@ -48,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 0;
+                flag2 = -1;
             }
         });
 
@@ -55,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 1;
+                flag2 = -1;
             }
         });
 
@@ -62,6 +74,28 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 2;
+                flag2 = -1;
+            }
+        });
+
+        coordinates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flag2 = 0;
+            }
+        });
+
+        resize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flag2 = 1;
+            }
+        });
+
+        color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flag2 = 2;
             }
         });
     }
@@ -70,6 +104,29 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View view, MotionEvent motionEvent){
         if(view instanceof SurfaceView){
             view.invalidate();
+
+            if(-1 != flag2){
+
+                if(0 == flag2){//coordinates
+
+                    String set = "Coordinates   x: " + motionEvent.getX() + "  y: " + motionEvent.getY();
+                    text.setText(set);
+
+                } else if(1 == flag2){
+
+
+
+                } else{
+
+
+
+                }
+
+            } else{
+
+
+
+            }
 
             float x = motionEvent.getX();
             float y = motionEvent.getY();
@@ -99,5 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             return false;
         }
     }
+
+
 
 }

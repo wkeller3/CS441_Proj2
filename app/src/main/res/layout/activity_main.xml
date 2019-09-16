@@ -21,27 +21,54 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Add Circle"
+                android:text="Circle"
                 android:textAllCaps="false"
-                android:textSize="20dp" />
+                android:textSize="10dp" />
 
             <Button
                 android:id="@+id/square"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Add Square"
+                android:text="Square"
                 android:textAllCaps="false"
-                android:textSize="20dp" />
+                android:textSize="10dp" />
 
             <Button
                 android:id="@+id/triangle"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Add Triangle"
+                android:text="Triangle"
                 android:textAllCaps="false"
-                android:textSize="20dp" />
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/resize"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Resize"
+                android:textAllCaps="false"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/coordinates"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Coordinates"
+                android:textAllCaps="false"
+                android:textSize="8dp" />
+
+            <Button
+                android:id="@+id/color"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Color"
+                android:textAllCaps="false"
+                android:textSize="10dp" />
 
         </LinearLayout>
 
@@ -50,6 +77,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 

@@ -55,7 +55,7 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
     public void drawSqaure(){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
-        background.setColor(Color.BLACK);
+        background.setColor(Color.YELLOW);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
         canvas.drawRect(xCoor, yCoor, xCoor+200, yCoor+200, paint);
         surfaceHolder.unlockCanvasAndPost(canvas);
@@ -64,18 +64,23 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
     public void drawTriangle(){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
-        background.setColor(Color.CYAN);
+        background.setColor(Color.WHITE);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
 
         Point a = new Point((int)xCoor,(int)yCoor);
         Point b = new Point((int)xCoor+150, (int)yCoor+150);
-        Point c = new Point((int)xCoor-150,(int)yCoor-150);
+        Point c = new Point((int)xCoor-150,(int)yCoor+150);
+
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStrokeWidth(5);
 
         Path path = new Path();
         //path.setFillType(Path.FillType.EVEN_ODD);
-        //path.moveTo(a.x, a.y);
+        path.moveTo(a.x, a.y);
         path.lineTo(b.x, b.y);
+        //path.moveTo(b.x, b.y);
         path.lineTo(c.x, c.y);
+        //path.moveTo(c.x, c.y);
         path.lineTo(a.x, a.y);
         path.close();
 
