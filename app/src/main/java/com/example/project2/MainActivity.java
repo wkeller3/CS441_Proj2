@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
 
 
@@ -24,8 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private Button resize = null;
     private Button color = null;
     private TextView text = null;
-    private int flag; //0 circle, 1 square, 2 triangle
-    private int flag2 = -1; //0 coordinates, 1 resize, 2 color
+    private int flag = -1; //0 circle, 1 square, 2 triangle
+    //private int flag2 = -1; //0 coordinates, 1 resize, 2 color
+    private Paint paint = new Paint();
+    private int size;
+    private boolean coordinateFlag = false;
+    private boolean colorFlag = false;
     private LinearLayout canvasLayout = null;//findViewById(R.id.customViewLayout);
     MySurface surfaceView = null;
 
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         color = findViewById(R.id.color);
         canvasLayout = findViewById(R.id.customViewLayout);
         text = findViewById(R.id.textView);
+        paint.setColor(Color.BLACK);
 
         // Hide the app title bar.
         getSupportActionBar().hide();
@@ -58,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 0;
-                flag2 = -1;
             }
         });
 
@@ -66,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 1;
-                flag2 = -1;
             }
         });
 
@@ -74,30 +79,31 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             @Override
             public void onClick(View view) {
                 flag = 2;
-                flag2 = -1;
             }
         });
 
         coordinates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flag2 = 0;
+                coordinateFlag = !coordinateFlag;
             }
         });
 
         resize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flag2 = 1;
+                Random rand = new Random();
+                size = rand.nextInt(300);
             }
         });
 
         color.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flag2 = 2;
+                colorFlag = !colorFlag;
             }
         });
+
     }
 
     @Override
@@ -105,55 +111,50 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if(view instanceof SurfaceView){
             view.invalidate();
 
-            if(-1 != flag2){
-
-                if(0 == flag2){//coordinates
-
-                    String set = "Coordinates   x: " + motionEvent.getX() + "  y: " + motionEvent.getY();
-                    text.setText(set);
-
-                } else if(1 == flag2){
-
-
-
-                } else{
-
-
-
-                }
-
-            } else{
-
-
-
-            }
-
             float x = motionEvent.getX();
             float y = motionEvent.getY();
 
             surfaceView.setXCoor(x);
             surfaceView.setYCoor(y);
 
-
             if(0 == flag){
-                Paint paint = new Paint();
-                paint.setColor(Color.RED);
-                surfaceView.setPaint(paint);
-                surfaceView.drawCircle();
+                setCoordinates(x,y);
+                changeColor();
+                surfaceView.drawCircle(size);
             } else if(1 == flag){
-                Paint paint = new Paint();
-                paint.setColor(Color.GREEN);
-                surfaceView.setPaint(paint);
-                surfaceView.drawSqaure();
+                setCoordinates(x,y);
+                changeColor();
+                surfaceView.drawSqaure(size);
             } else{
-                Paint paint = new Paint();
-                paint.setColor(Color.BLACK);
-                surfaceView.setPaint(paint);
-                surfaceView.drawTriangle();
+                setCoordinates(x,y);
+                changeColor();
+                surfaceView.drawTriangle(size);
             }
             return true;
         } else{
             return false;
+        }
+    }
+
+    private void changeColor(){
+        if(colorFlag){
+            Random rand = new Random();
+            paint.setARGB(255, rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+            colorFlag = false;
+        }
+        surfaceView.setPaint(paint);
+
+    }
+
+
+    private void setCoordinates(float x, float y){
+        if(coordinateFlag){//coordinates
+
+            String set = "Coordinates   x: " + x + "  y: " + y;
+            text.setText(set);
+
+        } else{
+            text.setText("");
         }
     }
 

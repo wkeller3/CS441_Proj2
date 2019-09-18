@@ -21,13 +21,13 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         super(context);
         surfaceHolder = getHolder();
         paint = new Paint();
-        paint.setColor(Color.CYAN);
+        paint.setColor(Color.BLACK);
 
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder){
-        drawCircle();
+        drawCircle(0);
     }
 
     @Override
@@ -41,35 +41,35 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
-    public void drawCircle(){
+    public void drawCircle(int size){
         surfaceHolder = getHolder();
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
-        background.setColor(Color.LTGRAY);
+        background.setColor(Color.WHITE);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
-        paint.setColor(Color.YELLOW);
-        canvas.drawCircle(xCoor, yCoor, 100, paint);
+        //paint.setColor(Color.BLACK);
+        canvas.drawCircle(xCoor, yCoor, 100+size, paint);
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
-    public void drawSqaure(){
+    public void drawSqaure(int size){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
-        background.setColor(Color.YELLOW);
+        background.setColor(Color.WHITE);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
-        canvas.drawRect(xCoor, yCoor, xCoor+200, yCoor+200, paint);
+        canvas.drawRect(xCoor, yCoor, size+xCoor+200, size+yCoor+200, paint);
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
-    public void drawTriangle(){
+    public void drawTriangle(int size){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
         background.setColor(Color.WHITE);
         canvas.drawRect(0, 0, this.getWidth(), this.getHeight(), background);
 
         Point a = new Point((int)xCoor,(int)yCoor);
-        Point b = new Point((int)xCoor+150, (int)yCoor+150);
-        Point c = new Point((int)xCoor-150,(int)yCoor+150);
+        Point b = new Point((int)xCoor+150+size, (int)yCoor+150+size);
+        Point c = new Point((int)xCoor-150-size,(int)yCoor+150+size);
 
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(5);
