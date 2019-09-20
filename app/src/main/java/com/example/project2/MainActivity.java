@@ -1,6 +1,8 @@
 package com.example.project2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private Button coordinates = null;
     private Button resize = null;
     private Button color = null;
+    private Button change = null;
     private TextView text = null;
     private int flag = -1; //0 circle, 1 square, 2 triangle
     //private int flag2 = -1; //0 coordinates, 1 resize, 2 color
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         canvasLayout = findViewById(R.id.customViewLayout);
         text = findViewById(R.id.textView);
         paint.setColor(Color.BLACK);
+        change = findViewById(R.id.change);
 
         // Hide the app title bar.
         getSupportActionBar().hide();
@@ -104,6 +108,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
         });
 
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Hangman.class));
+            }
+        });
+
     }
 
     @Override
@@ -124,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             } else if(1 == flag){
                 setCoordinates(x,y);
                 changeColor();
-                surfaceView.drawSqaure(size);
+                surfaceView.drawSquare(size);
             } else{
                 setCoordinates(x,y);
                 changeColor();

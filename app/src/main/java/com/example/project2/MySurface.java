@@ -52,7 +52,7 @@ public class MySurface extends SurfaceView implements SurfaceHolder.Callback {
         surfaceHolder.unlockCanvasAndPost(canvas);
     }
 
-    public void drawSqaure(int size){
+    public void drawSquare(int size){
         Canvas canvas = surfaceHolder.lockCanvas();
         Paint background = new Paint();
         background.setColor(Color.WHITE);
