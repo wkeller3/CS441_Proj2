@@ -95,6 +95,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('a');
+                a.setEnabled(false);
             }
         });
 
@@ -102,6 +103,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('b');
+                b.setEnabled(false);
             }
         });
 
@@ -109,6 +111,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('c');
+                c.setEnabled(false);
             }
         });
 
@@ -116,6 +119,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('d');
+                d.setEnabled(false);
             }
         });
 
@@ -123,6 +127,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('e');
+                e.setEnabled(false);
             }
         });
 
@@ -130,6 +135,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('f');
+                f.setEnabled(false);
             }
         });
 
@@ -137,6 +143,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('g');
+                g.setEnabled(false);
             }
         });
 
@@ -144,6 +151,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('h');
+                h.setEnabled(false);
             }
         });
 
@@ -151,6 +159,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('i');
+                i.setEnabled(false);
             }
         });
 
@@ -158,6 +167,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('j');
+                j.setEnabled(false);
             }
         });
 
@@ -165,6 +175,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('k');
+                k.setEnabled(false);
             }
         });
 
@@ -172,6 +183,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('l');
+                l.setEnabled(false);
             }
         });
 
@@ -179,6 +191,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('m');
+                m.setEnabled(false);
             }
         });
 
@@ -186,6 +199,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('n');
+                n.setEnabled(false);
             }
         });
 
@@ -193,6 +207,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('o');
+                o.setEnabled(false);
             }
         });
 
@@ -200,6 +215,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('p');
+                p.setEnabled(false);
             }
         });
 
@@ -207,6 +223,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('q');
+                q.setEnabled(false);
             }
         });
 
@@ -214,6 +231,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('r');
+                r.setEnabled(false);
             }
         });
 
@@ -221,6 +239,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('s');
+                s.setEnabled(false);
             }
         });
 
@@ -228,6 +247,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('t');
+                t.setEnabled(false);
             }
         });
 
@@ -235,6 +255,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('u');
+                u.setEnabled(false);
             }
         });
 
@@ -242,6 +263,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('v');
+                v.setEnabled(false);
             }
         });
 
@@ -249,6 +271,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('w');
+                w.setEnabled(false);
             }
         });
 
@@ -256,6 +279,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('x');
+                x.setEnabled(false);
             }
         });
 
@@ -263,6 +287,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('y');
+                y.setEnabled(false);
             }
         });
 
@@ -270,6 +295,7 @@ public class Hangman extends AppCompatActivity implements View.OnTouchListener {
             @Override
             public void onClick(View view) {
                 check('z');
+                z.setEnabled(false);
             }
         });
     }
